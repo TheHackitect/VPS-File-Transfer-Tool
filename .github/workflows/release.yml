@@ -1,0 +1,85 @@
+name: Build and Release
+
+on:
+  push:
+    tags:
+      - 'v*.*.*'  # Triggers on tags like v1.0.0, v2.1.3, etc.
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout Repository
+      uses: actions/checkout@v3
+
+    - name: Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.9'  # Specify your Python version
+
+    - name: Install Dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install -r requirements.txt
+
+    - name: Build Executable with PyInstaller
+      run: |
+        pyinstaller --onefile --windowed \
+        --add-data "resources/icons/app_icon.png:resources/icons" \
+        --add-data "resources/images/intro_image.png:resources/images" \
+        src/main.py
+
+    - name: Upload Executable as Artifact
+      uses: actions/upload-artifact@v3
+      with:
+        name: VPS-File-Transfer-Tool
+        path: dist/main  # Adjust if your executable has a different name or path
+
+  release:
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+    - name: Download Executable Artifact
+      uses: actions/download-artifact@v3
+      with:
+        name: VPS-File-Transfer-Tool
+        path: ./dist
+
+    - name: Create GitHub Release
+      id: create_release
+      uses: actions/create-release@v1
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      with:
+        tag_name: ${{ github.ref }}
+        release_name: Release ${{ github.ref }}
+        body: |
+          ## 🚀 What's New
+          
+          - Initial release of VPS File Transfer Tool.
+          
+          ## 🔧 Features
+          - Secure SSH and SFTP connections.
+          - Local and Remote Explorers.
+          - File and directory upload/download.
+          - Exclusion of specified files/directories.
+          - Real-time progress tracking.
+          - Remote file management (download, delete, rename, create directories, move).
+          - Developer information and links.
+          
+          ## 📥 Download
+          [Download Executable](https://github.com/yourusername/VPS-File-Transfer-Tool/releases/download/${{ github.ref }}/main)
+          
+          ## 📜 License
+          This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+    - name: Upload Executable to Release
+      uses: actions/upload-release-asset@v1
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      with:
+        upload_url: ${{ steps.create_release.outputs.upload_url }}
+        asset_path: ./dist/main
+        asset_name: VPS-File-Transfer-Tool-${{ github.ref }}.exe  # Adjust extension based on OS
+        asset_content_type: application/octet-stream
