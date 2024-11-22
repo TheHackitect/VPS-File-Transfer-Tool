@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>VPS File Transfer Tool</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f4f4f4;
+            color: #333333;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: auto;
+            overflow: hidden;
+            padding: 20px;
+            background-color: #ffffff;
+        }
+        header {
+            text-align: center;
+            padding-bottom: 20px;
+        }
+        header img {
+            width: 150px;
+            height: auto;
+        }
+        header h1 {
+            font-size: 2.5em;
+            margin: 10px 0;
+            color: #2e8b57;
+        }
+        section {
+            margin-bottom: 40px;
+        }
+        h2 {
+            color: #2e8b57;
+            border-bottom: 2px solid #2e8b57;
+            padding-bottom: 10px;
+        }
+        ul {
+            list-style: none;
+            padding: 0;
+        }
+        ul li {
+            background: url('https://em-content.zobj.net/thumbs/120/google/298/check-mark_2705.png') no-repeat left center;
+            background-size: 20px 20px;
+            padding-left: 30px;
+            margin-bottom: 10px;
+        }
+        pre {
+            background-color: #f0f0f0;
+            padding: 15px;
+            border-radius: 5px;
+            overflow-x: auto;
+        }
+        code {
+            background-color: #e8e8e8;
+            padding: 2px 4px;
+            border-radius: 3px;
+        }
+        .badge {
+            display: inline-block;
+            padding: 0.25em 0.4em;
+            font-size: 75%;
+            font-weight: 700;
+            line-height: 1;
+            color: #fff;
+            background-color: #007bff;
+            border-radius: 0.25rem;
+            margin-left: 5px;
+        }
+        footer {
+            text-align: center;
+            padding: 20px 0;
+            background-color: #2e8b57;
+            color: #ffffff;
+        }
+        a {
+            color: #007bff;
+            text-decoration: none;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+        .social-icons img {
+            width: 30px;
+            margin: 0 10px;
+            vertical-align: middle;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <img src="resources/images/intro_image.png" alt="VPS File Transfer Tool">
+            <h1>🚀 VPS File Transfer Tool</h1>
+            <p>A robust and user-friendly PyQt6 application for seamless file transfers between your local machine and a Virtual Private Server (VPS).</p>
+        </header>
+        
+        <section>
+            <h2>✨ Features</h2>
+            <ul>
+                <li>🔒 **Secure Connections**: Establish SSH and SFTP connections to your VPS with ease.</li>
+                <li>🗂️ **Dual Explorer Views**: Navigate through your local and remote file systems effortlessly using integrated explorers.</li>
+                <li>📁 **Comprehensive File Management**: Upload, download, delete, rename, create directories, and move files and folders.</li>
+                <li>🚫 **Exclusion Support**: Specify files or directories to exclude from transfers to streamline your workflow.</li>
+                <li>📊 **Real-Time Progress Tracking**: Monitor transfer progress with a dynamic progress bar and detailed logs.</li>
+                <li>⏹️ **Graceful Termination**: Safely terminate ongoing transfers without corrupting data.</li>
+                <li>🌐 **Developer Info & Links**: Access developer profiles and contact information directly from the application.</li>
+            </ul>
+        </section>
+        
+        <section>
+            <h2>🛠️ Installation</h2>
+            <h3>🔍 Prerequisites</h3>
+            <ul>
+                <li>💻 **Python 3.7+**: Ensure Python is installed on your system. [Download Python](https://www.python.org/downloads/)</li>
+                <li>📦 **pip**: Python package installer. Typically included with Python.</li>
+            </ul>
+            
+            <h3>📥 Clone the Repository</h3>
+            <pre><code>git clone https://github.com/yourusername/VPS-File-Transfer-Tool.git</code></pre>
+            
+            <h3>📂 Navigate to the Project Directory</h3>
+            <pre><code>cd VPS-File-Transfer-Tool</code></pre>
+            
+            <h3>📦 Install Dependencies</h3>
+            <pre><code>pip install -r requirements.txt</code></pre>
+        </section>
+        
+        <section>
+            <h2>🚀 Usage</h2>
+            <ol>
+                <li>🔓 **Launch the Application**:
+                    <pre><code>python src/main.py</code></pre>
+                </li>
+                <li>🖥️ **Configure VPS Credentials**:
+                    <ul>
+                        <li>Enter your VPS IP address, port, username, and password.</li>
+                        <li>Specify the destination directory on your VPS.</li>
+                        <li>Optionally, list any files or directories to exclude from transfers.</li>
+                    </ul>
+                </li>
+                <li>📁 **Select Files/Folders**:
+                    <ul>
+                        <li>Use the Local Explorer to navigate and select files or directories you wish to transfer.</li>
+                    </ul>
+                </li>
+                <li>➡️ **Initiate Transfer**:
+                    <ul>
+                        <li>Click the "Transfer Files" button to start uploading selected items to your VPS.</li>
+                        <li>Monitor the progress through the progress bar and logs.</li>
+                    </ul>
+                </li>
+                <li>🔄 **Manage Remote Files**:
+                    <ul>
+                        <li>Use the Remote Explorer's context menu to download, delete, rename, create directories, or move files on your VPS.</li>
+                    </ul>
+                </li>
+            </ol>
+        </section>
+        
+        <section>
+            <h2>💻 Compiling to a Standalone Executable</h2>
+            <p>To distribute your application as a standalone executable, you can use <a href="https://www.pyinstaller.org/" target="_blank">PyInstaller</a>. This tool packages your Python application and all its dependencies into a single executable file.</p>
+            
+            <h3>📥 Install PyInstaller</h3>
+            <pre><code>pip install pyinstaller</code></pre>
+            
+            <h3>🛠️ Prepare Your Application</h3>
+            <ul>
+                <li>Ensure all resource files (icons, images) are correctly referenced in your code.</li>
+                <li>Place all resources in the `resources/` directory.</li>
+            </ul>
+            
+            <h3>📦 Create the Executable</h3>
+            <pre><code>pyinstaller --onefile --windowed --add-data "resources/icons/app_icon.png;resources/icons" --add-data "resources/images/intro_image.png;resources/images" src/main.py</code></pre>
+            
+            <p><strong>Options Explained:</strong></p>
+            <ul>
+                <li><code>--onefile</code>: Creates a single executable file.</li>
+                <li><code>--windowed</code>: Prevents a console window from appearing (suitable for GUI applications).</li>
+                <li><code>--add-data</code>: Includes additional non-Python files (e.g., images, icons). The syntax is <code>source;destination</code> on Windows and <code>source:destination</code> on macOS/Linux.</li>
+            </ul>
+            
+            <p>After running the above command, the executable will be located in the <code>dist/</code> directory.</p>
+        </section>
+        
+        <section>
+            <h2>📜 License</h2>
+            <p>This project is licensed under the <a href="LICENSE" target="_blank">MIT License</a>.</p>
+        </section>
+        
+        <section>
+            <h2>🤝 Contributing</h2>
+            <p>Contributions are welcome! Please follow these steps:</p>
+            <ol>
+                <li>🔀 Fork the repository.</li>
+                <li>✏️ Create a new branch for your feature or bugfix.</li>
+                <li>💾 Commit your changes with clear messages.</li>
+                <li>🔄 Push your branch to your fork.</li>
+                <li>📝 Open a Pull Request detailing your changes.</li>
+            </ol>
+            <p>For major changes, please open an issue first to discuss what you would like to change.</p>
+        </section>
+        
+        <section>
+            <h2>📫 Contact</h2>
+            <p>For any inquiries or support, please contact <a href="mailto:thehackitect@example.com">thehackitect@example.com</a>.</p>
+        </section>
+        
+        <footer>
+            <h2>🌟 Developer Info</h2>
+            <div class="social-icons">
+                <a href="https://github.com/thehackitect" target="_blank">
+                    <img src="https://img.icons8.com/color/48/000000/github.png" alt="GitHub">
+                </a>
+                <a href="https://twitter.com/thehackitect" target="_blank">
+                    <img src="https://img.icons8.com/color/48/000000/twitter-squared.png" alt="Twitter">
+                </a>
+                <a href="https://linkedin.com/in/thehackitect" target="_blank">
+                    <img src="https://img.icons8.com/color/48/000000/linkedin.png" alt="LinkedIn">
+                </a>
+                <a href="mailto:thehackitect@example.com" target="_blank">
+                    <img src="https://img.icons8.com/color/48/000000/email.png" alt="Email">
+                </a>
+                <a href="https://www.thehackitect.com" target="_blank">
+                    <img src="https://img.icons8.com/color/48/000000/domain.png" alt="Website">
+                </a>
+            </div>
+            <p>&copy; [Year] thehackitect. All rights reserved.</p>
+        </footer>
+    </div>
+</body>
+</html>
